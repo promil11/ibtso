@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  ArrowRight, 
-  Lock, 
-  Mail, 
+import {
+  ArrowRight,
+  Lock,
+  Mail,
   AlertCircle,
   ShieldCheck,
   ChevronRight,
@@ -32,105 +32,95 @@ export interface BrandAccount {
 }
 
 export const BRAND_EXECUTIVE_ACCOUNTS: BrandAccount[] = [
-  { 
-    email: 'lg@ibtso.com', 
-    password: 'lg2026', 
-    brand: 'LG', 
-    companyName: 'LG Electronics Gulf', 
+  {
+    email: 'lg@ibtso.com',
+    password: 'lg2026',
+    brand: 'LG',
+    companyName: 'LG Electronics Gulf',
     executiveTitle: 'Commercial Retail Director',
     badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40 ring-rose-500/20',
     accentBg: 'from-rose-500/15 via-slate-900 to-slate-950',
     initials: 'LG'
   },
-  { 
-    email: 'samsung@ibtso.com', 
-    password: 'samsung2026', 
-    brand: 'Samsung', 
-    companyName: 'Samsung Electronics MENA', 
+  {
+    email: 'samsung@ibtso.com',
+    password: 'samsung2026',
+    brand: 'Samsung',
+    companyName: 'Samsung Electronics MENA',
     executiveTitle: 'Retail Intelligence Lead',
     badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40 ring-blue-500/20',
     accentBg: 'from-blue-500/15 via-slate-900 to-slate-950',
     initials: 'SS'
   },
-  { 
-    email: 'midea@ibtso.com', 
-    password: 'midea2026', 
-    brand: 'Midea', 
-    companyName: 'Midea Middle East Trading', 
+  {
+    email: 'midea@ibtso.com',
+    password: 'midea2026',
+    brand: 'Midea',
+    companyName: 'Midea Middle East Trading',
     executiveTitle: 'Appliance Category Head',
     badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 ring-cyan-500/20',
     accentBg: 'from-cyan-500/15 via-slate-900 to-slate-950',
     initials: 'MD'
   },
-  { 
-    email: 'gree@ibtso.com', 
-    password: 'gree2026', 
-    brand: 'Gree', 
-    companyName: 'Gree Air Conditioning Oman', 
+  {
+    email: 'gree@ibtso.com',
+    password: 'gree2026',
+    brand: 'Gree',
+    companyName: 'Gree Air Conditioning Oman',
     executiveTitle: 'Regional Sales Director',
     badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 ring-emerald-500/20',
     accentBg: 'from-emerald-500/15 via-slate-900 to-slate-950',
     initials: 'GR'
   },
-  { 
-    email: 'toshiba@ibtso.com', 
-    password: 'toshiba2026', 
-    brand: 'Toshiba', 
-    companyName: 'Toshiba Consumer Products', 
+  {
+    email: 'toshiba@ibtso.com',
+    password: 'toshiba2026',
+    brand: 'Toshiba',
+    companyName: 'Toshiba Consumer Products',
     executiveTitle: 'Regional Retail Lead',
     badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40 ring-amber-500/20',
     accentBg: 'from-amber-500/15 via-slate-900 to-slate-950',
     initials: 'TS'
   },
-  { 
-    email: 'philips@ibtso.com', 
-    password: 'philips2026', 
-    brand: 'Philips', 
-    companyName: 'Philips Domestic Appliances', 
+  {
+    email: 'philips@ibtso.com',
+    password: 'philips2026',
+    brand: 'Philips',
+    companyName: 'Philips Domestic Appliances',
     executiveTitle: 'Commercial Lead',
     badgeColor: 'bg-pink-500/20 text-pink-300 border-pink-500/40 ring-pink-500/20',
     accentBg: 'from-pink-500/15 via-slate-900 to-slate-950',
     initials: 'PH'
   },
-  { 
-    email: 'haier@ibtso.com', 
-    password: 'haier2026', 
-    brand: 'Haier', 
-    companyName: 'Haier Middle East', 
+  {
+    email: 'haier@ibtso.com',
+    password: 'haier2026',
+    brand: 'Haier',
+    companyName: 'Haier Middle East',
     executiveTitle: 'Market Intelligence Director',
     badgeColor: 'bg-teal-500/20 text-teal-300 border-teal-500/40 ring-teal-500/20',
     accentBg: 'from-teal-500/15 via-slate-900 to-slate-950',
     initials: 'HR'
   },
-  { 
-    email: 'hitachi@ibtso.com', 
-    password: 'hitachi2026', 
-    brand: 'Hitachi', 
-    companyName: 'Hitachi Home Appliances', 
+  {
+    email: 'hitachi@ibtso.com',
+    password: 'hitachi2026',
+    brand: 'Hitachi',
+    companyName: 'Hitachi Home Appliances',
     executiveTitle: 'Oman Brand Lead',
     badgeColor: 'bg-orange-500/20 text-orange-300 border-orange-500/40 ring-orange-500/20',
     accentBg: 'from-orange-500/15 via-slate-900 to-slate-950',
     initials: 'HT'
   },
-  { 
-    email: 'panasonic@ibtso.com', 
-    password: 'panasonic2026', 
-    brand: 'Panasonic', 
-    companyName: 'Panasonic Marketing ME', 
+  {
+    email: 'panasonic@ibtso.com',
+    password: 'panasonic2026',
+    brand: 'Panasonic',
+    companyName: 'Panasonic Marketing ME',
     executiveTitle: 'Channel Sales Manager',
     badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40 ring-indigo-500/20',
     accentBg: 'from-indigo-500/15 via-slate-900 to-slate-950',
     initials: 'PN'
-  },
-  { 
-    email: 'admin@ibtso.com', 
-    password: 'ibtso2026', 
-    brand: 'LG', 
-    companyName: 'IBTSO Master Administration', 
-    executiveTitle: 'Platform Administrator',
-    badgeColor: 'bg-amber-400 text-slate-950 border-amber-400 font-bold',
-    accentBg: 'from-amber-500/20 via-indigo-950 to-slate-950',
-    initials: 'AD'
   },
 ];
 
@@ -139,8 +129,8 @@ interface Props {
 }
 
 export const LoginModal: React.FC<Props> = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(BRAND_EXECUTIVE_ACCOUNTS[0].email);
+  const [password, setPassword] = useState(BRAND_EXECUTIVE_ACCOUNTS[0].password);
   const [selectedExecutive, setSelectedExecutive] = useState<BrandAccount>(BRAND_EXECUTIVE_ACCOUNTS[0]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -173,7 +163,6 @@ export const LoginModal: React.FC<Props> = ({ onLogin }) => {
     setEmail(acc.email);
     setPassword(acc.password);
     setErrorMessage(null);
-    onLogin(acc.brand);
   };
 
   return (
@@ -184,7 +173,7 @@ export const LoginModal: React.FC<Props> = ({ onLogin }) => {
 
       {/* Main Glassmorphic Showcase Container */}
       <div className="max-w-5xl w-full bg-slate-900/90 backdrop-blur-2xl border border-slate-800/90 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 relative z-10">
-        
+
         {/* LEFT COLUMN (7 Cols): IBTSO Intelligence Showcase & 1-Click Executive Grid */}
         <div className="lg:col-span-7 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800/80">
           <div className="space-y-6">
@@ -247,9 +236,8 @@ export const LoginModal: React.FC<Props> = ({ onLogin }) => {
                       key={acc.email}
                       type="button"
                       onClick={() => handleOneClickExecutiveLogin(acc)}
-                      className={`relative bg-gradient-to-r ${acc.accentBg} hover:bg-slate-800/90 border ${
-                        isSelected ? 'border-amber-400 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/10' : 'border-slate-800 hover:border-slate-700'
-                      } p-2.5 rounded-xl text-left transition-all duration-200 group flex items-center justify-between cursor-pointer`}
+                      className={`relative bg-gradient-to-r ${acc.accentBg} hover:bg-slate-800/90 border ${isSelected ? 'border-amber-400 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/10' : 'border-slate-800 hover:border-slate-700'
+                        } p-2.5 rounded-xl text-left transition-all duration-200 group flex items-center justify-between cursor-pointer`}
                     >
                       <div className="flex items-center gap-2.5 truncate">
                         {/* Brand Avatar Badge */}
