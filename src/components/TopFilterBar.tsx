@@ -7,9 +7,10 @@ import {
   Filter, 
   RefreshCw, 
   Download,
-  Search
+  Calculator,
+  Sparkles
 } from 'lucide-react';
-import type { Brand, Category, OmanRegion, Dealer } from '../types/intelligence';
+import type { Brand, Category, OmanRegion } from '../types/intelligence';
 import { BRANDS, CATEGORIES, REGIONS, CITIES_BY_REGION, DEALERS } from '../data/mockDealers';
 
 interface Props {
@@ -52,26 +53,26 @@ export const TopFilterBar: React.FC<Props> = ({
     : CITIES_BY_REGION[selectedRegion] || [];
 
   return (
-    <div className="bg-slate-900 border-b border-slate-800 px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+    <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950/60 border-b border-slate-800/90 px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs shadow-md">
       <div className="flex flex-wrap items-center gap-2.5">
-        <div className="flex items-center gap-1.5 text-slate-400 font-medium mr-1">
+        <div className="flex items-center gap-1.5 text-slate-300 font-bold mr-1">
           <Filter className="w-3.5 h-3.5 text-amber-400" />
           <span>Filters:</span>
         </div>
 
         {/* Active Authenticated Brand Badge */}
-        <div className="flex items-center bg-amber-500/10 border border-amber-500/30 rounded-md px-2.5 py-1 gap-1.5 text-xs">
+        <div className="flex items-center bg-gradient-to-r from-amber-500/20 to-amber-500/5 border border-amber-500/40 rounded-lg px-3 py-1 gap-1.5 text-xs shadow-sm">
           <span className="text-slate-400 font-medium">Client:</span>
-          <span className="text-amber-300 font-bold font-mono">{selectedBrand}</span>
+          <span className="text-amber-300 font-extrabold font-mono tracking-tight">{selectedBrand}</span>
         </div>
 
         {/* Category */}
-        <div className="flex items-center bg-slate-950 border border-slate-700/80 rounded-md px-2 py-1 gap-1.5">
-          <Layers className="w-3 h-3 text-slate-400" />
+        <div className="flex items-center bg-slate-950/90 border border-slate-800 rounded-lg px-2.5 py-1 gap-1.5">
+          <Layers className="w-3.5 h-3.5 text-slate-400" />
           <select 
             value={selectedCategory} 
             onChange={(e) => setSelectedCategory(e.target.value as any)}
-            className="bg-transparent text-white focus:outline-none cursor-pointer"
+            className="bg-transparent text-slate-200 font-semibold focus:outline-none cursor-pointer"
           >
             <option value="All Categories" className="bg-slate-900 text-slate-200">All Categories (6)</option>
             {CATEGORIES.map(c => (
@@ -81,15 +82,15 @@ export const TopFilterBar: React.FC<Props> = ({
         </div>
 
         {/* Region */}
-        <div className="flex items-center bg-slate-950 border border-slate-700/80 rounded-md px-2 py-1 gap-1.5">
-          <MapPin className="w-3 h-3 text-slate-400" />
+        <div className="flex items-center bg-slate-950/90 border border-slate-800 rounded-lg px-2.5 py-1 gap-1.5">
+          <MapPin className="w-3.5 h-3.5 text-slate-400" />
           <select 
             value={selectedRegion} 
             onChange={(e) => {
               setSelectedRegion(e.target.value as any);
               setSelectedCity('All Cities');
             }}
-            className="bg-transparent text-white focus:outline-none cursor-pointer"
+            className="bg-transparent text-slate-200 font-semibold focus:outline-none cursor-pointer"
           >
             <option value="All Regions" className="bg-slate-900 text-slate-200">All Regions (Oman)</option>
             {REGIONS.map(r => (
@@ -99,11 +100,11 @@ export const TopFilterBar: React.FC<Props> = ({
         </div>
 
         {/* City */}
-        <div className="flex items-center bg-slate-950 border border-slate-700/80 rounded-md px-2 py-1 gap-1.5">
+        <div className="flex items-center bg-slate-950/90 border border-slate-800 rounded-lg px-2.5 py-1 gap-1.5">
           <select 
             value={selectedCity} 
             onChange={(e) => setSelectedCity(e.target.value)}
-            className="bg-transparent text-white focus:outline-none cursor-pointer"
+            className="bg-transparent text-slate-200 font-semibold focus:outline-none cursor-pointer"
           >
             <option value="All Cities" className="bg-slate-900 text-slate-200">All Cities</option>
             {availableCities.map(c => (
@@ -113,12 +114,12 @@ export const TopFilterBar: React.FC<Props> = ({
         </div>
 
         {/* Dealer */}
-        <div className="flex items-center bg-slate-950 border border-slate-700/80 rounded-md px-2 py-1 gap-1.5 max-w-[220px]">
-          <Building2 className="w-3 h-3 text-slate-400 shrink-0" />
+        <div className="flex items-center bg-slate-950/90 border border-slate-800 rounded-lg px-2.5 py-1 gap-1.5 max-w-[220px]">
+          <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
           <select 
             value={selectedDealerId} 
             onChange={(e) => setSelectedDealerId(e.target.value)}
-            className="bg-transparent text-white focus:outline-none truncate cursor-pointer w-full"
+            className="bg-transparent text-slate-200 font-semibold focus:outline-none truncate cursor-pointer w-full"
           >
             <option value="All Dealers" className="bg-slate-900 text-slate-200">All 230 IR Dealers</option>
             {DEALERS.map(d => (
@@ -128,12 +129,12 @@ export const TopFilterBar: React.FC<Props> = ({
         </div>
 
         {/* Month */}
-        <div className="flex items-center bg-slate-950 border border-slate-700/80 rounded-md px-2 py-1 gap-1.5">
-          <Calendar className="w-3 h-3 text-amber-400" />
+        <div className="flex items-center bg-slate-950/90 border border-slate-800 rounded-lg px-2.5 py-1 gap-1.5">
+          <Calendar className="w-3.5 h-3.5 text-amber-400" />
           <select 
             value={selectedMonth} 
             onChange={(e) => setSelectedMonth(e.target.value)}
-            className="bg-transparent text-amber-300 font-medium focus:outline-none cursor-pointer"
+            className="bg-transparent text-amber-300 font-bold focus:outline-none cursor-pointer"
           >
             <option value="2026-10" className="bg-slate-900 text-slate-200">Oct 2026</option>
             <option value="2026-09" className="bg-slate-900 text-slate-200">Sep 2026</option>
@@ -150,7 +151,7 @@ export const TopFilterBar: React.FC<Props> = ({
             setSelectedDealerId('All Dealers');
           }}
           title="Reset non-brand filters"
-          className="p-1.5 text-slate-400 hover:text-white rounded hover:bg-slate-800 transition-colors"
+          className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
@@ -161,23 +162,25 @@ export const TopFilterBar: React.FC<Props> = ({
         {onOpenFormula && (
           <button
             onClick={onOpenFormula}
-            className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-2.5 py-1.5 rounded-md font-medium transition-all"
+            className="flex items-center gap-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer shadow-sm"
           >
+            <Calculator className="w-3.5 h-3.5 text-amber-400" />
             <span>Formula Math</span>
           </button>
         )}
         {onOpenRoadmap && (
           <button
             onClick={onOpenRoadmap}
-            className="flex items-center gap-1.5 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 px-2.5 py-1.5 rounded-md font-medium transition-all"
+            className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-950/80 to-slate-900 hover:bg-indigo-900/60 text-indigo-300 border border-indigo-500/40 px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer shadow-sm"
           >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
             <span>Phase 3 Roadmap</span>
           </button>
         )}
         {onExportClick && (
           <button 
             onClick={onExportClick}
-            className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1.5 rounded-md transition-all shadow-sm"
+            className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold px-3.5 py-1.5 rounded-lg transition-all shadow-md shadow-amber-500/20 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export Intel</span>

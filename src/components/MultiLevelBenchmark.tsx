@@ -133,57 +133,68 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
   return (
     <div className="space-y-6">
       {/* Benchmark Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full filter blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-xs font-semibold shadow-sm">
                 Hierarchical Architecture
               </span>
               <span className="text-xs text-slate-400">4-Tier Aggregation Pipeline</span>
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Globe2 className="w-6 h-6 text-amber-400" />
+            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-md">
+                <Globe2 className="w-5 h-5" />
+              </div>
               <span>Multi-Level Market Benchmark</span>
             </h1>
-            <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
               Inspect visibility share at the four required levels: <strong>Dealer Level → City Level → Regional Level → National Benchmark</strong> across Oman's independent appliance retail network.
             </p>
           </div>
 
           {/* Level Switcher Pipeline Tabs */}
-          <div className="flex items-center p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs font-semibold">
+          <div className="flex items-center p-1.5 bg-slate-950/90 rounded-2xl border border-slate-800/80 text-xs font-semibold shadow-inner">
             <button
               onClick={() => setActiveLevel('national')}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-                activeLevel === 'national' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                activeLevel === 'national' 
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <span>1. National</span>
             </button>
-            <span className="text-slate-600">→</span>
+            <span className="text-slate-600 font-bold px-1">→</span>
             <button
               onClick={() => setActiveLevel('regional')}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-                activeLevel === 'regional' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                activeLevel === 'regional' 
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <span>2. Regional</span>
             </button>
-            <span className="text-slate-600">→</span>
+            <span className="text-slate-600 font-bold px-1">→</span>
             <button
               onClick={() => setActiveLevel('city')}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-                activeLevel === 'city' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                activeLevel === 'city' 
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <span>3. City</span>
             </button>
-            <span className="text-slate-600">→</span>
+            <span className="text-slate-600 font-bold px-1">→</span>
             <button
               onClick={() => setActiveLevel('dealer')}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-                activeLevel === 'dealer' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                activeLevel === 'dealer' 
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <span>4. Dealer</span>
@@ -196,31 +207,31 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
       {activeLevel === 'national' && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-              <span className="text-xs text-slate-400">Total National IR Network</span>
+            <div className="bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 border border-slate-800/80 rounded-2xl p-4.5 shadow-lg">
+              <span className="text-xs text-slate-400 font-medium">Total National IR Network</span>
               <p className="text-2xl font-black text-white mt-1">230 Dealers</p>
-              <p className="text-[11px] text-slate-500">100% of tracked IR footprint in Oman</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">100% of tracked IR footprint in Oman</p>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-              <span className="text-xs text-slate-400">Total Monitored Floor Units</span>
-              <p className="text-2xl font-black text-white mt-1">{nationalDisplays.length.toLocaleString()}</p>
-              <p className="text-[11px] text-slate-500">Physical SKU audits ({selectedMonth})</p>
+            <div className="bg-gradient-to-br from-indigo-950/20 via-slate-900 to-slate-950 border border-slate-800/80 rounded-2xl p-4.5 shadow-lg">
+              <span className="text-xs text-slate-400 font-medium">Total Monitored Floor Units</span>
+              <p className="text-2xl font-black text-white mt-1 font-mono">{nationalDisplays.length.toLocaleString()}</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">Physical SKU audits ({selectedMonth})</p>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-              <span className="text-xs text-slate-400">{selectedBrand} National Share</span>
+            <div className="bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-4.5 shadow-lg">
+              <span className="text-xs text-slate-400 font-medium">{selectedBrand} National Share</span>
               <p className="text-2xl font-black text-amber-400 font-mono mt-1">
                 {nationalClient?.visibilityShare}%
               </p>
-              <p className="text-[11px] text-slate-400">Rank #{nationalClient?.rank} nationally</p>
+              <p className="text-[11px] text-slate-400 mt-0.5">Rank #{nationalClient?.rank} nationally</p>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-              <span className="text-xs text-slate-400">National Leader</span>
+            <div className="bg-gradient-to-br from-emerald-950/20 via-slate-900 to-slate-950 border border-slate-800/80 rounded-2xl p-4.5 shadow-lg">
+              <span className="text-xs text-slate-400 font-medium">National Leader</span>
               <p className="text-2xl font-black text-slate-200 mt-1">{nationalShares[0]?.brand}</p>
-              <p className="text-[11px] text-emerald-400 font-mono">{nationalShares[0]?.visibilityShare}% visibility share</p>
+              <p className="text-[11px] text-emerald-400 font-mono font-bold mt-0.5">{nationalShares[0]?.visibilityShare}% visibility share</p>
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+          <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
             <h2 className="text-sm font-bold text-white mb-1">
               National Brand Visibility Benchmark (All 230 IR Dealers)
             </h2>
@@ -238,17 +249,17 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-950 border border-slate-800 p-2.5 rounded shadow text-xs">
+                          <div className="bg-slate-950 border border-slate-800 p-3 rounded-xl shadow-2xl text-xs space-y-1">
                             <p className="font-bold text-white">{d.brand}</p>
-                            <p className="text-amber-400">National Share: {d.visibilityShare}%</p>
-                            <p className="text-slate-300">Audited Displays: {d.modelsDisplayed}</p>
+                            <p className="text-amber-400 font-mono">National Share: {d.visibilityShare}%</p>
+                            <p className="text-slate-300 font-mono">Audited Displays: {d.modelsDisplayed}</p>
                           </div>
                         );
                       }
                       return null;
                     }}
                   />
-                  <Bar dataKey="visibilityShare" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="visibilityShare" radius={[6, 6, 0, 0]}>
                     {nationalShares.slice(0, 8).map((entry) => (
                       <Cell
                         key={entry.brand}
@@ -268,7 +279,7 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
       {/* LEVEL 2: REGIONAL BENCHMARK */}
       {activeLevel === 'regional' && (
         <div className="space-y-6">
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+          <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
             <h2 className="text-sm font-bold text-white mb-1">
               Regional Visibility Share Benchmark (10 Governorates)
             </h2>
@@ -286,10 +297,10 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-950 border border-slate-800 p-2.5 rounded shadow text-xs">
+                          <div className="bg-slate-950 border border-slate-800 p-3 rounded-xl shadow-2xl text-xs space-y-1">
                             <p className="font-bold text-white">{d.region} Governorate</p>
-                            <p className="text-amber-400">{selectedBrand} Share: {d.clientShare}%</p>
-                            <p className="text-slate-300">Rank: #{d.clientRank} in region</p>
+                            <p className="text-amber-400 font-mono">{selectedBrand} Share: {d.clientShare}%</p>
+                            <p className="text-slate-300 font-mono">Rank: #{d.clientRank} in region</p>
                             <p className="text-slate-400">Regional Leader: {d.topBrand} ({d.topBrandShare}%)</p>
                             <p className="text-slate-500">Dealers: {d.dealerCount} IRs</p>
                           </div>
@@ -298,43 +309,43 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
                       return null;
                     }}
                   />
-                  <Bar dataKey="clientShare" name={`${selectedBrand} Share`} fill="#f59e0b" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="topBrandShare" name="Governorate Leader Share" fill="#334155" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="clientShare" name={`${selectedBrand} Share`} fill="#f59e0b" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="topBrandShare" name="Governorate Leader Share" fill="#334155" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           {/* Regional Table */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 overflow-x-auto">
+          <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+              <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800/80">
                 <tr>
-                  <th className="py-2.5 px-3">Governorate</th>
-                  <th className="py-2.5 px-3">IR Dealers</th>
-                  <th className="py-2.5 px-3">{selectedBrand} Share</th>
-                  <th className="py-2.5 px-3">{selectedBrand} Rank</th>
-                  <th className="py-2.5 px-3">Top Brand in Region</th>
-                  <th className="py-2.5 px-3">Leader Share</th>
-                  <th className="py-2.5 px-3">Action</th>
+                  <th className="py-3 px-4">Governorate</th>
+                  <th className="py-3 px-4">IR Dealers</th>
+                  <th className="py-3 px-4">{selectedBrand} Share</th>
+                  <th className="py-3 px-4">{selectedBrand} Rank</th>
+                  <th className="py-3 px-4">Top Brand in Region</th>
+                  <th className="py-3 px-4">Leader Share</th>
+                  <th className="py-3 px-4">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
                 {regionalData.map((reg) => (
-                  <tr key={reg.region} className="hover:bg-slate-800/40">
-                    <td className="py-2.5 px-3 font-semibold text-white">{reg.region}</td>
-                    <td className="py-2.5 px-3 font-mono">{reg.dealerCount} stores</td>
-                    <td className="py-2.5 px-3 font-mono font-bold text-amber-400">{reg.clientShare}%</td>
-                    <td className="py-2.5 px-3 font-mono text-slate-300">#{reg.clientRank}</td>
-                    <td className="py-2.5 px-3 font-medium text-slate-200">{reg.topBrand}</td>
-                    <td className="py-2.5 px-3 font-mono text-slate-300">{reg.topBrandShare}%</td>
-                    <td className="py-2.5 px-3">
+                  <tr key={reg.region} className="hover:bg-slate-800/40 transition-colors">
+                    <td className="py-3 px-4 font-semibold text-white">{reg.region}</td>
+                    <td className="py-3 px-4 font-mono text-slate-300">{reg.dealerCount} stores</td>
+                    <td className="py-3 px-4 font-mono font-bold text-amber-400">{reg.clientShare}%</td>
+                    <td className="py-3 px-4 font-mono text-slate-300">#{reg.clientRank}</td>
+                    <td className="py-3 px-4 font-medium text-slate-200">{reg.topBrand}</td>
+                    <td className="py-3 px-4 font-mono text-slate-300">{reg.topBrandShare}%</td>
+                    <td className="py-3 px-4">
                       <button
                         onClick={() => {
                           setSelectedRegionTab(reg.region);
                           setActiveLevel('city');
                         }}
-                        className="text-[11px] text-amber-400 hover:underline flex items-center gap-1"
+                        className="text-[11px] text-amber-400 hover:underline flex items-center gap-1 font-semibold"
                       >
                         Drill to Cities <ChevronRight className="w-3 h-3" />
                       </button>
@@ -350,9 +361,9 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
       {/* LEVEL 3: CITY BENCHMARK */}
       {activeLevel === 'city' && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-slate-400">Select Governorate for City Benchmark:</span>
+          <div className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800/80 p-4 rounded-2xl text-xs shadow-md">
+            <div className="flex items-center gap-2.5">
+              <span className="text-slate-400 font-medium">Select Governorate for City Benchmark:</span>
               <select
                 value={selectedRegionTab}
                 onChange={(e) => {
@@ -361,27 +372,27 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
                   const cities = CITIES_BY_REGION[reg];
                   if (cities && cities.length > 0) setSelectedCityTab(cities[0]);
                 }}
-                className="bg-slate-950 border border-slate-700 text-white rounded px-2.5 py-1 font-semibold"
+                className="bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-1.5 font-bold shadow-sm"
               >
                 {REGIONS.map((r) => (
                   <option key={r} value={r}>{r}</option>
                 ))}
               </select>
             </div>
-            <span className="text-slate-400">
+            <span className="text-slate-400 font-mono">
               {citiesInRegion.length} cities tracked in {selectedRegionTab}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5">
             {cityData.map((c) => (
               <div 
                 key={c.city}
-                className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-xl p-4 transition-all"
+                className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl p-4.5 transition-all duration-300 shadow-lg transform hover:-translate-y-0.5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-bold text-white">{c.city}</h3>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
                     {c.dealerCount} IR Dealers
                   </span>
                 </div>
@@ -391,24 +402,24 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
                     <span className="text-2xl font-black text-amber-400 font-mono">{c.clientShare}%</span>
                     <span className="text-xs text-slate-400 ml-1.5">{selectedBrand}</span>
                   </div>
-                  <span className="text-xs font-mono text-slate-300">Rank #{c.clientRank}</span>
+                  <span className="text-xs font-mono text-slate-300 font-bold bg-slate-950 px-2 py-0.5 rounded border border-slate-800">Rank #{c.clientRank}</span>
                 </div>
 
-                <div className="w-full bg-slate-800 rounded-full h-1.5 mt-2.5 overflow-hidden">
+                <div className="w-full bg-slate-950 rounded-full h-2 mt-3 overflow-hidden border border-slate-800/60 p-0.5">
                   <div
-                    className="bg-amber-500 h-1.5 rounded-full"
+                    className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full shadow-sm shadow-amber-500/50"
                     style={{ width: `${Math.min(100, c.clientShare * 2)}%` }}
                   />
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] text-slate-400 mt-3 pt-2 border-t border-slate-800/80">
+                <div className="flex items-center justify-between text-[11px] text-slate-400 mt-3.5 pt-2.5 border-t border-slate-800/80">
                   <span>Leader: <strong className="text-slate-200">{c.topBrand} ({c.topBrandShare}%)</strong></span>
                   <button
                     onClick={() => {
                       setSelectedCityTab(c.city);
                       setActiveLevel('dealer');
                     }}
-                    className="text-amber-400 hover:underline flex items-center gap-0.5"
+                    className="text-amber-400 hover:underline flex items-center gap-0.5 font-semibold"
                   >
                     View Dealers <ChevronRight className="w-3 h-3" />
                   </button>
@@ -422,65 +433,65 @@ export const MultiLevelBenchmark: React.FC<Props> = ({
       {/* LEVEL 4: DEALER LEVEL BENCHMARK */}
       {activeLevel === 'dealer' && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-slate-400">City Scope:</span>
+          <div className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800/80 p-4 rounded-2xl text-xs shadow-md">
+            <div className="flex items-center gap-2.5">
+              <span className="text-slate-400 font-medium">City Scope:</span>
               <select
                 value={selectedCityTab}
                 onChange={(e) => setSelectedCityTab(e.target.value)}
-                className="bg-slate-950 border border-slate-700 text-white rounded px-2.5 py-1 font-semibold"
+                className="bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-1.5 font-bold shadow-sm"
               >
                 {citiesInRegion.map((city) => (
                   <option key={city} value={city}>{city}</option>
                 ))}
               </select>
             </div>
-            <span className="text-slate-400">
+            <span className="text-slate-400 font-mono">
               {dealerBenchmarkData.length} Independent Retailers in {selectedCityTab}
             </span>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 overflow-x-auto">
+          <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+              <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800/80">
                 <tr>
-                  <th className="py-2.5 px-3">Dealer Name</th>
-                  <th className="py-2.5 px-3">Tier</th>
-                  <th className="py-2.5 px-3">{selectedBrand} Share</th>
-                  <th className="py-2.5 px-3">Units Audited</th>
-                  <th className="py-2.5 px-3">Store Leader</th>
-                  <th className="py-2.5 px-3">Leader Share</th>
-                  <th className="py-2.5 px-3">Action</th>
+                  <th className="py-3 px-4">Dealer Name</th>
+                  <th className="py-3 px-4">Tier</th>
+                  <th className="py-3 px-4">{selectedBrand} Share</th>
+                  <th className="py-3 px-4">Units Audited</th>
+                  <th className="py-3 px-4">Store Leader</th>
+                  <th className="py-3 px-4">Leader Share</th>
+                  <th className="py-3 px-4">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
                 {dealerBenchmarkData.map((row) => (
-                  <tr key={row.dealer.id} className="hover:bg-slate-800/40">
-                    <td className="py-2.5 px-3">
-                      <div className="font-semibold text-white">{row.dealer.name}</div>
+                  <tr key={row.dealer.id} className="hover:bg-slate-800/40 transition-colors">
+                    <td className="py-3 px-4">
+                      <div className="font-bold text-white">{row.dealer.name}</div>
                       <div className="text-[11px] text-slate-500 font-mono">{row.dealer.code}</div>
                     </td>
-                    <td className="py-2.5 px-3">
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                    <td className="py-3 px-4">
+                      <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-bold border border-slate-700">
                         {row.dealer.tier.split(' ')[0]} {row.dealer.tier.split(' ')[1]}
                       </span>
                     </td>
-                    <td className="py-2.5 px-3 font-mono font-bold text-amber-400">
+                    <td className="py-3 px-4 font-mono font-bold text-amber-400 text-sm">
                       {row.clientShare}%
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-slate-300">
+                    <td className="py-3 px-4 font-mono text-slate-300">
                       {row.clientDisplays} of {row.totalDisplays}
                     </td>
-                    <td className="py-2.5 px-3 font-medium text-slate-200">
+                    <td className="py-3 px-4 font-semibold text-slate-200">
                       {row.topBrand}
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-slate-300">
+                    <td className="py-3 px-4 font-mono text-slate-300">
                       {row.topBrandShare}%
                     </td>
-                    <td className="py-2.5 px-3">
+                    <td className="py-3 px-4">
                       <button
                         onClick={() => onSelectDealer(row.dealer.id)}
-                        className="text-[11px] text-amber-400 hover:underline flex items-center gap-1 font-semibold"
+                        className="text-[11px] text-amber-400 hover:underline flex items-center gap-1 font-bold"
                       >
                         Inspect Store <ArrowRight className="w-3 h-3" />
                       </button>

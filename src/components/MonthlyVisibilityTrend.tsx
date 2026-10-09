@@ -101,49 +101,52 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
   return (
     <div className="space-y-6">
       {/* Trends Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full filter blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-semibold shadow-sm">
                 MoM Visibility Telemetry
               </span>
               <span className="text-xs text-slate-400">Monthly Audit Progression</span>
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-              <TrendingUp className="w-6 h-6 text-amber-400" />
+            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-md">
+                <TrendingUp className="w-5 h-5" />
+              </div>
               <span>Month-on-Month Visibility Trends</span>
             </h1>
-            <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
               Track how {selectedBrand} physical display presence and floor share fluctuate across consecutive monthly audits across Oman's 230 independent appliance retailers.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs">
-            <div>
-              <span className="text-slate-400 block text-[11px]">Latest MoM Shift</span>
-              <div className="flex items-center gap-1 mt-0.5 font-bold font-mono text-base">
+          <div className="grid grid-cols-2 gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800/80 text-xs shadow-inner">
+            <div className="px-1">
+              <span className="text-slate-400 block text-[11px] font-medium">Latest MoM Shift</span>
+              <div className="flex items-center gap-1 mt-1 font-black font-mono text-lg">
                 {octDelta >= 0 ? (
                   <span className="text-emerald-400 flex items-center">
-                    <ArrowUpRight className="w-4 h-4" /> +{octDelta}%
+                    <ArrowUpRight className="w-4.5 h-4.5" /> +{octDelta}%
                   </span>
                 ) : (
                   <span className="text-rose-400 flex items-center">
-                    <ArrowDownRight className="w-4 h-4" /> {octDelta}%
+                    <ArrowDownRight className="w-4.5 h-4.5" /> {octDelta}%
                   </span>
                 )}
               </div>
             </div>
-            <div>
-              <span className="text-slate-400 block text-[11px]">Quarterly Trajectory</span>
-              <div className="flex items-center gap-1 mt-0.5 font-bold font-mono text-base">
+            <div className="px-1 border-l border-slate-800/80">
+              <span className="text-slate-400 block text-[11px] font-medium">Quarterly Trajectory</span>
+              <div className="flex items-center gap-1 mt-1 font-black font-mono text-lg">
                 {threeMonthDelta >= 0 ? (
                   <span className="text-emerald-400 flex items-center">
-                    <ArrowUpRight className="w-4 h-4" /> +{threeMonthDelta}%
+                    <ArrowUpRight className="w-4.5 h-4.5" /> +{threeMonthDelta}%
                   </span>
                 ) : (
                   <span className="text-rose-400 flex items-center">
-                    <ArrowDownRight className="w-4 h-4" /> {threeMonthDelta}%
+                    <ArrowDownRight className="w-4.5 h-4.5" /> {threeMonthDelta}%
                   </span>
                 )}
               </div>
@@ -153,7 +156,7 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
       </div>
 
       {/* Main Multi-Line Trend Chart */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-sm font-bold text-white">
@@ -163,8 +166,8 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
               August 2026 → September 2026 → October 2026
             </p>
           </div>
-          <div className="text-xs text-slate-400">
-            Scope: <span className="text-slate-200 font-semibold">{selectedCategory}</span>
+          <div className="text-xs text-slate-300 bg-slate-950 px-3 py-1 rounded-xl border border-slate-800 shadow-inner">
+            Scope: <span className="text-amber-400 font-bold">{selectedCategory}</span>
           </div>
         </div>
 
@@ -178,7 +181,7 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
                 content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="bg-slate-950 border border-slate-800 p-3 rounded-lg shadow-2xl text-xs space-y-1">
+                      <div className="bg-slate-950 border border-slate-800 p-3 rounded-xl shadow-2xl text-xs space-y-1.5">
                         <p className="font-bold text-white border-b border-slate-800 pb-1 mb-1">{label}</p>
                         {payload.map((entry: any) => (
                           <div key={entry.name} className="flex items-center justify-between gap-6 py-0.5">
@@ -227,7 +230,7 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
       </div>
 
       {/* Monthly Audit Breakdown Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
         <h2 className="text-sm font-bold text-white mb-1">
           Historical Audit Comparison Log
         </h2>
@@ -235,16 +238,16 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
           Detailed metrics across the previous three consecutive monthly audit cycles
         </p>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-xl border border-slate-800/80">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+            <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800/80">
               <tr>
-                <th className="py-2.5 px-3">Audit Cycle</th>
-                <th className="py-2.5 px-3">Total Oman IR Displays</th>
-                <th className="py-2.5 px-3">{selectedBrand} Units</th>
-                <th className="py-2.5 px-3">{selectedBrand} Share</th>
-                <th className="py-2.5 px-3">MoM Shift</th>
-                <th className="py-2.5 px-3">Audit Execution Status</th>
+                <th className="py-3 px-4">Audit Cycle</th>
+                <th className="py-3 px-4">Total Oman IR Displays</th>
+                <th className="py-3 px-4">{selectedBrand} Units</th>
+                <th className="py-3 px-4">{selectedBrand} Share</th>
+                <th className="py-3 px-4">MoM Shift</th>
+                <th className="py-3 px-4">Audit Execution Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 text-slate-300">
@@ -262,20 +265,20 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
                 const delta = Number((shareVal - prevVal).toFixed(1));
 
                 return (
-                  <tr key={m} className={idx === months.length - 1 ? 'bg-amber-500/5' : 'hover:bg-slate-800/40'}>
-                    <td className="py-2.5 px-3 font-semibold text-white">
+                  <tr key={m} className={idx === months.length - 1 ? 'bg-amber-500/10' : 'hover:bg-slate-800/40 transition-colors'}>
+                    <td className="py-3 px-4 font-bold text-white">
                       {monthLabels[m]}
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-slate-400">
+                    <td className="py-3 px-4 font-mono text-slate-400">
                       {displaysInMonth.length} displays audited
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-white font-bold">
+                    <td className="py-3 px-4 font-mono text-white font-bold">
                       {client ? client.modelsDisplayed : 0} units
                     </td>
-                    <td className="py-2.5 px-3 font-mono font-bold text-amber-400">
+                    <td className="py-3 px-4 font-mono font-black text-amber-400 text-sm">
                       {shareVal}%
                     </td>
-                    <td className="py-2.5 px-3 font-mono">
+                    <td className="py-3 px-4 font-mono">
                       {idx === 0 ? (
                         <span className="text-slate-500">Baseline</span>
                       ) : delta >= 0 ? (
@@ -284,8 +287,8 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
                         <span className="text-rose-400 font-bold">{delta}%</span>
                       )}
                     </td>
-                    <td className="py-2.5 px-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                    <td className="py-3 px-4">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 shadow-sm">
                         100% Census Completed
                       </span>
                     </td>

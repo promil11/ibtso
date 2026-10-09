@@ -180,19 +180,19 @@ export const ExecutiveDashboard: React.FC<Props> = ({
       {/* Primary KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Visibility Share */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
+        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden group transition-all">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Visibility Share</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-300">Visibility Share</span>
+            <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shadow-sm">
               <Percent className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white">
+            <span className="text-3xl font-black text-white font-mono">
               {clientMetric.visibilityShare}%
             </span>
-            <span className={`text-xs font-semibold flex items-center ${
-              (clientMetric.momChange || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
+            <span className={`text-xs font-bold flex items-center px-1.5 py-0.5 rounded-md ${
+              (clientMetric.momChange || 0) >= 0 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
             }`}>
               {(clientMetric.momChange || 0) >= 0 ? (
                 <TrendingUp className="w-3.5 h-3.5 mr-0.5 inline" />
@@ -208,18 +208,18 @@ export const ExecutiveDashboard: React.FC<Props> = ({
         </div>
 
         {/* Display Units */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
+        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden group transition-all">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Monitored Displays</span>
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">Monitored Displays</span>
+            <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shadow-sm">
               <Eye className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white">
+            <span className="text-3xl font-black text-white font-mono">
               {clientMetric.modelsDisplayed.toLocaleString()}
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-400 font-mono">
               / {totalDisplays.toLocaleString()} units
             </span>
           </div>
@@ -229,18 +229,18 @@ export const ExecutiveDashboard: React.FC<Props> = ({
         </div>
 
         {/* Store Penetration */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
+        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/30 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden group transition-all">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Store Penetration</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">Store Penetration</span>
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shadow-sm">
               <Store className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white">
+            <span className="text-3xl font-black text-white font-mono">
               {dealerPenetrationPct}%
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-400 font-mono">
               ({dealersWithPresence.size} / {scopedDealerIds.size} IRs)
             </span>
           </div>
@@ -250,18 +250,18 @@ export const ExecutiveDashboard: React.FC<Props> = ({
         </div>
 
         {/* Prime Shelf Quality */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
+        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950/30 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden group transition-all">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Prime Shelf Ratio</span>
-            <div className="w-8 h-8 rounded-lg bg-violet-500/10 text-violet-400 flex items-center justify-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Prime Shelf Ratio</span>
+            <div className="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center shadow-sm">
               <Award className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white">
+            <span className="text-3xl font-black text-white font-mono">
               {clientMetric.primeSpotRatio}%
             </span>
-            <span className="text-xs text-amber-400 font-medium">Eye-level / Feature</span>
+            <span className="text-xs text-amber-400 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">Eye-level / Feature</span>
           </div>
           <p className="text-xs text-slate-400 mt-2">
             Floor placement quality (Prime stands vs standard/secondary)

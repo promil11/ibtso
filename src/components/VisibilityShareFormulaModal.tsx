@@ -18,22 +18,22 @@ export const VisibilityShareFormulaModal: React.FC<Props> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
+      <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800/90 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
         {/* Header */}
-        <div className="bg-slate-900 border-b border-slate-800 p-5 flex items-center justify-between">
+        <div className="bg-slate-900/95 border-b border-slate-800/80 p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shadow-md">
               <Calculator className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">Brand Visibility Share Formula</h2>
-              <p className="text-xs text-slate-400">IBTSO Standard Methodology for Oman IR Market</p>
+              <h2 className="text-base font-extrabold text-white">Brand Visibility Share Formula</h2>
+              <p className="text-xs text-slate-400 mt-0.5">IBTSO Standard Methodology for Oman IR Market</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white"
+            className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
