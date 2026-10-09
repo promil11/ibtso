@@ -20,6 +20,9 @@ export function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     return localStorage.getItem('ibtso_authenticated') === 'true';
   });
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    return (localStorage.getItem('ibtso_theme') as 'light' | 'dark') || 'light';
+  });
   const [activeTab, setActiveTab] = useState<ActiveTab>('executive');
 
   // Modal states
@@ -38,6 +41,18 @@ export function App() {
 
   // Currently inspected dealer for detail view
   const [inspectedDealerId, setInspectedDealerId] = useState<string>(DEALERS[0].id);
+
+  // Sync theme to document body and localStorage
+  React.useEffect(() => {
+    document.body.className = theme === 'light' 
+      ? 'theme-light bg-slate-50 text-slate-900 min-h-screen' 
+      : 'theme-dark bg-slate-950 text-slate-100 min-h-screen';
+    localStorage.setItem('ibtso_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   const handleSelectDealerFromList = (dealerId: string) => {
     setInspectedDealerId(dealerId);
@@ -69,18 +84,25 @@ export function App() {
   if (!isLoggedIn) {
     return (
       <LoginModal
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onLogin={(brand) => handleLoginSuccess(brand)}
       />
     );
   }
 
   const inspectedDealer = DEALERS.find(d => d.id === inspectedDealerId) || DEALERS[0];
+  const isLight = theme === 'light';
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-slate-950 font-sans text-slate-100">
+    <div className={`flex h-screen w-screen overflow-hidden font-sans transition-colors duration-300 ${
+      isLight ? 'bg-slate-100/70 text-slate-900' : 'bg-slate-950 text-slate-100'
+    }`}>
       {/* Sidebar Navigation */}
       <aside className="w-72 shrink-0 h-full">
         <Navigation
+          theme={theme}
+          onToggleTheme={toggleTheme}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           selectedBrand={selectedBrand}
@@ -107,6 +129,8 @@ export function App() {
         {/* Top Header Filter Bar */}
         <header className="shrink-0">
           <TopFilterBar
+            theme={theme}
+            onToggleTheme={toggleTheme}
             selectedBrand={selectedBrand}
             setSelectedBrand={setSelectedBrand}
             selectedCategory={selectedCategory}
@@ -131,10 +155,13 @@ export function App() {
         </header>
 
         {/* Scrollable Screen Content */}
-        <main className="flex-1 overflow-y-auto p-6 bg-slate-950">
+        <main className={`flex-1 overflow-y-auto p-6 transition-colors duration-300 ${
+          isLight ? 'bg-slate-100/70' : 'bg-slate-950'
+        }`}>
           <div className="max-w-7xl mx-auto space-y-6">
             {activeTab === 'executive' && (
               <ExecutiveDashboard
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 selectedRegion={selectedRegion}
@@ -148,6 +175,7 @@ export function App() {
 
             {activeTab === 'network' && (
               <DealerNetwork
+                theme={theme}
                 dealers={DEALERS}
                 displays={ALL_DISPLAYS}
                 selectedBrand={selectedBrand}
@@ -158,6 +186,7 @@ export function App() {
 
             {activeTab === 'dealer-detail' && (
               <DealerDetail
+                theme={theme}
                 dealer={inspectedDealer}
                 displays={ALL_DISPLAYS}
                 selectedBrand={selectedBrand}
@@ -172,6 +201,7 @@ export function App() {
 
             {activeTab === 'category' && (
               <CategoryVisibility
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
@@ -185,6 +215,7 @@ export function App() {
 
             {activeTab === 'competitor' && (
               <BrandVsCompetitor
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 selectedRegion={selectedRegion}
@@ -197,6 +228,7 @@ export function App() {
 
             {activeTab === 'benchmarks' && (
               <MultiLevelBenchmark
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 selectedMonth={selectedMonth}
@@ -208,6 +240,7 @@ export function App() {
 
             {activeTab === 'trends' && (
               <MonthlyVisibilityTrend
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 selectedRegion={selectedRegion}
@@ -219,6 +252,7 @@ export function App() {
 
             {activeTab === 'reports' && (
               <ReportsAndExport
+                theme={theme}
                 selectedBrand={selectedBrand}
                 selectedCategory={selectedCategory}
                 selectedRegion={selectedRegion}
@@ -234,11 +268,13 @@ export function App() {
 
       {/* Interactive Modals */}
       <Phase3RoadmapModal
+        theme={theme}
         isOpen={isRoadmapOpen}
         onClose={() => setIsRoadmapOpen(false)}
       />
 
       <VisibilityShareFormulaModal
+        theme={theme}
         isOpen={isFormulaOpen}
         onClose={() => setIsFormulaOpen(false)}
         brand={selectedBrand}

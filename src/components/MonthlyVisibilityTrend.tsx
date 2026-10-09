@@ -24,6 +24,7 @@ import {
 } from 'recharts';
 
 interface Props {
+  theme?: 'light' | 'dark';
   selectedBrand: Brand;
   selectedCategory: Category | 'All Categories';
   selectedRegion: OmanRegion | 'All Regions';
@@ -48,6 +49,7 @@ const BRAND_COLORS: Record<string, string> = {
 };
 
 export const MonthlyVisibilityTrend: React.FC<Props> = ({
+  theme = 'light',
   selectedBrand,
   selectedCategory,
   selectedRegion,
@@ -55,6 +57,7 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
   dealers,
   displays,
 }) => {
+  const isLight = theme === 'light';
   const months = ['2026-08', '2026-09', '2026-10'];
   const monthLabels: Record<string, string> = {
     '2026-08': 'Aug 2026',
@@ -101,51 +104,61 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
   return (
     <div className="space-y-6">
       {/* Trends Header */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+      <div className={`border rounded-2xl p-6 shadow-xl relative overflow-hidden transition-colors ${
+        isLight
+          ? 'bg-gradient-to-r from-white via-indigo-50/40 to-white border-slate-200 text-slate-900 shadow-slate-200/50'
+          : 'bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border-slate-800/80 text-white'
+      }`}>
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full filter blur-3xl pointer-events-none -mr-20 -mt-20"></div>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-semibold shadow-sm">
+              <span className={`px-2.5 py-0.5 rounded-full border text-xs font-semibold shadow-sm ${
+                isLight ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+              }`}>
                 MoM Visibility Telemetry
               </span>
-              <span className="text-xs text-slate-400">Monthly Audit Progression</span>
+              <span className={`text-xs ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Monthly Audit Progression</span>
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-md">
+            <h1 className={`text-2xl font-bold tracking-tight flex items-center gap-2.5 ${isLight ? 'text-slate-900' : 'text-white'}`}>
+              <div className={`p-2 rounded-xl border shadow-md ${
+                isLight ? 'bg-amber-50 text-amber-600 border-amber-200' : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+              }`}>
                 <TrendingUp className="w-5 h-5" />
               </div>
               <span>Month-on-Month Visibility Trends</span>
             </h1>
-            <p className="text-xs text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
+            <p className={`text-xs mt-1.5 max-w-2xl leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
               Track how {selectedBrand} physical display presence and floor share fluctuate across consecutive monthly audits across Oman's 230 independent appliance retailers.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800/80 text-xs shadow-inner">
+          <div className={`grid grid-cols-2 gap-3 p-3.5 rounded-2xl border text-xs shadow-inner ${
+            isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/80 border-slate-800/80'
+          }`}>
             <div className="px-1">
-              <span className="text-slate-400 block text-[11px] font-medium">Latest MoM Shift</span>
+              <span className={`block text-[11px] font-medium ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Latest MoM Shift</span>
               <div className="flex items-center gap-1 mt-1 font-black font-mono text-lg">
                 {octDelta >= 0 ? (
-                  <span className="text-emerald-400 flex items-center">
+                  <span className="text-emerald-600 dark:text-emerald-400 flex items-center">
                     <ArrowUpRight className="w-4.5 h-4.5" /> +{octDelta}%
                   </span>
                 ) : (
-                  <span className="text-rose-400 flex items-center">
+                  <span className="text-rose-600 dark:text-rose-400 flex items-center">
                     <ArrowDownRight className="w-4.5 h-4.5" /> {octDelta}%
                   </span>
                 )}
               </div>
             </div>
-            <div className="px-1 border-l border-slate-800/80">
-              <span className="text-slate-400 block text-[11px] font-medium">Quarterly Trajectory</span>
+            <div className={`px-1 border-l ${isLight ? 'border-slate-200' : 'border-slate-800/80'}`}>
+              <span className={`block text-[11px] font-medium ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Quarterly Trajectory</span>
               <div className="flex items-center gap-1 mt-1 font-black font-mono text-lg">
                 {threeMonthDelta >= 0 ? (
-                  <span className="text-emerald-400 flex items-center">
+                  <span className="text-emerald-600 dark:text-emerald-400 flex items-center">
                     <ArrowUpRight className="w-4.5 h-4.5" /> +{threeMonthDelta}%
                   </span>
                 ) : (
-                  <span className="text-rose-400 flex items-center">
+                  <span className="text-rose-600 dark:text-rose-400 flex items-center">
                     <ArrowDownRight className="w-4.5 h-4.5" /> {threeMonthDelta}%
                   </span>
                 )}
@@ -156,40 +169,46 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
       </div>
 
       {/* Main Multi-Line Trend Chart */}
-      <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
+      <div className={`border rounded-2xl p-5 shadow-xl ${
+        isLight ? 'bg-white border-slate-200 text-slate-900 shadow-slate-200/50' : 'bg-gradient-to-b from-slate-900/90 to-slate-950/90 border-slate-800/80 text-white'
+      }`}>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-sm font-bold text-white">
+            <h2 className={`text-sm font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
               Visibility Share Trajectory (% of Monitored IR Displays)
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className={`text-xs ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
               August 2026 → September 2026 → October 2026
             </p>
           </div>
-          <div className="text-xs text-slate-300 bg-slate-950 px-3 py-1 rounded-xl border border-slate-800 shadow-inner">
-            Scope: <span className="text-amber-400 font-bold">{selectedCategory}</span>
+          <div className={`text-xs px-3 py-1 rounded-xl border ${
+            isLight ? 'bg-slate-50 border-slate-200 text-slate-700' : 'bg-slate-950 border-slate-800 text-slate-300'
+          }`}>
+            Scope: <span className="text-amber-600 dark:text-amber-400 font-bold">{selectedCategory}</span>
           </div>
         </div>
 
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={trendData} margin={{ top: 20, right: 30, left: 10, bottom: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+              <CartesianGrid strokeDasharray="3 3" stroke={isLight ? '#e2e8f0' : '#1e293b'} />
               <XAxis dataKey="monthLabel" stroke="#94a3b8" fontSize={12} />
               <YAxis unit="%" stroke="#94a3b8" fontSize={11} domain={[0, 'dataMax + 8']} />
               <Tooltip
                 content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="bg-slate-950 border border-slate-800 p-3 rounded-xl shadow-2xl text-xs space-y-1.5">
-                        <p className="font-bold text-white border-b border-slate-800 pb-1 mb-1">{label}</p>
+                      <div className={`p-3 rounded-xl shadow-2xl text-xs space-y-1.5 border ${
+                        isLight ? 'bg-white border-slate-200 text-slate-900' : 'bg-slate-950 border-slate-800 text-white'
+                      }`}>
+                        <p className={`font-bold border-b pb-1 mb-1 ${isLight ? 'border-slate-200' : 'border-slate-800'}`}>{label}</p>
                         {payload.map((entry: any) => (
                           <div key={entry.name} className="flex items-center justify-between gap-6 py-0.5">
                             <span className="flex items-center gap-1.5" style={{ color: entry.color }}>
                               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color }} />
                               {entry.name}:
                             </span>
-                            <span className="font-mono font-bold text-white">{entry.value}%</span>
+                            <span className={`font-mono font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{entry.value}%</span>
                           </div>
                         ))}
                       </div>
@@ -230,17 +249,21 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
       </div>
 
       {/* Monthly Audit Breakdown Table */}
-      <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
-        <h2 className="text-sm font-bold text-white mb-1">
+      <div className={`border rounded-2xl p-5 shadow-xl ${
+        isLight ? 'bg-white border-slate-200 text-slate-900 shadow-slate-200/50' : 'bg-gradient-to-b from-slate-900/90 to-slate-950/90 border-slate-800/80 text-white'
+      }`}>
+        <h2 className={`text-sm font-bold mb-1 ${isLight ? 'text-slate-900' : 'text-white'}`}>
           Historical Audit Comparison Log
         </h2>
-        <p className="text-xs text-slate-400 mb-4">
+        <p className={`text-xs mb-4 ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
           Detailed metrics across the previous three consecutive monthly audit cycles
         </p>
 
-        <div className="overflow-x-auto rounded-xl border border-slate-800/80">
+        <div className={`overflow-x-auto rounded-xl border ${isLight ? 'border-slate-200' : 'border-slate-800/80'}`}>
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800/80">
+            <thead className={`font-semibold border-b ${
+              isLight ? 'bg-slate-50 text-slate-600 border-slate-200' : 'bg-slate-950 text-slate-400 border-slate-800/80'
+            }`}>
               <tr>
                 <th className="py-3 px-4">Audit Cycle</th>
                 <th className="py-3 px-4">Total Oman IR Displays</th>
@@ -250,7 +273,7 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
                 <th className="py-3 px-4">Audit Execution Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className={`divide-y ${isLight ? 'divide-slate-100 text-slate-700' : 'divide-slate-800/60 text-slate-300'}`}>
               {months.map((m, idx) => {
                 const displaysInMonth = filterDisplays(displays, dealers, {
                   category: selectedCategory,
@@ -265,30 +288,36 @@ export const MonthlyVisibilityTrend: React.FC<Props> = ({
                 const delta = Number((shareVal - prevVal).toFixed(1));
 
                 return (
-                  <tr key={m} className={idx === months.length - 1 ? 'bg-amber-500/10' : 'hover:bg-slate-800/40 transition-colors'}>
-                    <td className="py-3 px-4 font-bold text-white">
+                  <tr key={m} className={
+                    idx === months.length - 1 
+                      ? (isLight ? 'bg-amber-50/80 font-medium' : 'bg-amber-500/10') 
+                      : (isLight ? 'hover:bg-slate-50 transition-colors' : 'hover:bg-slate-800/40 transition-colors')
+                  }>
+                    <td className={`py-3 px-4 font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
                       {monthLabels[m]}
                     </td>
-                    <td className="py-3 px-4 font-mono text-slate-400">
+                    <td className={`py-3 px-4 font-mono ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
                       {displaysInMonth.length} displays audited
                     </td>
-                    <td className="py-3 px-4 font-mono text-white font-bold">
+                    <td className={`py-3 px-4 font-mono font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
                       {client ? client.modelsDisplayed : 0} units
                     </td>
-                    <td className="py-3 px-4 font-mono font-black text-amber-400 text-sm">
+                    <td className={`py-3 px-4 font-mono font-black text-sm ${isLight ? 'text-amber-600' : 'text-amber-400'}`}>
                       {shareVal}%
                     </td>
                     <td className="py-3 px-4 font-mono">
                       {idx === 0 ? (
-                        <span className="text-slate-500">Baseline</span>
+                        <span className={isLight ? 'text-slate-400' : 'text-slate-500'}>Baseline</span>
                       ) : delta >= 0 ? (
-                        <span className="text-emerald-400 font-bold">+{delta}%</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">+{delta}%</span>
                       ) : (
-                        <span className="text-rose-400 font-bold">{delta}%</span>
+                        <span className="text-rose-600 dark:text-rose-400 font-bold">{delta}%</span>
                       )}
                     </td>
                     <td className="py-3 px-4">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 shadow-sm">
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
+                        isLight ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
+                      }`}>
                         100% Census Completed
                       </span>
                     </td>
